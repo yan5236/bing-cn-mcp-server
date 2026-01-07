@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "bing-search": {
+      "command": "node",
+      "args": [
+        "E:\\xiangmu\\bingcnmcp\\build\\index.js"
+      ]
+    }
+  }
+}
