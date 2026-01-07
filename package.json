@@ -13,9 +13,17 @@
     "dev": "tsc && node build/index.js"
   },
   "files": ["build"],
-  "keywords": ["mcp", "bing", "search"],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["mcp", "bing", "search", "chinese", "搜索", "必应"],
+  "author": "yan5236",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yan5236/bing-cn-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yan5236/bing-cn-mcp-server/issues"
+  },
+  "homepage": "https://github.com/yan5236/bing-cn-mcp-server#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.1",
     "axios": "^1.13.2",
