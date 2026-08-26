@@ -1,5 +1,3 @@
-
-
 # 必应中文搜索 MCP 服务器
 
 让 AI 助手（如 Claude）能够使用必应搜索引擎实时获取网络信息的工具。
@@ -131,7 +129,8 @@ Claude 会自动调用必应搜索工具并返回结果。
 抓取并提取网页的文本内容（自动跳过无法访问的网站）。
 
 **参数说明**:
-- `uuids` (必填) 和 `urlMap` (必填): 搜索结果的 UUID 列表，以及 UUID 到 URL 的映射对象
+- `uuids` (必填): 搜索结果的 UUID 列表，可以是单个或多个 UUID
+- `urlMap` (必填): UUID 到 URL 的映射对象，格式: `{"uuid1": "url1", "uuid2": "url2"}`
 
 **返回内容**:
 - 网页标题
@@ -185,11 +184,13 @@ Claude 会自动调用必应搜索工具并返回结果。
 
 **AI 会调用**: `bing_search`，参数为 `{ "query": "React Hooks 教程", "offset": 10 }`
 
-### 示例 4: 抓取网页内容
+### 示例 4: 抓取搜索结果中的网页内容
 
-**提问**: "帮我抓取这个网页的内容 https://example.com/article"
+**提问**: "搜索 React 教程，并抓取第一个搜索结果的完整内容"
 
-**AI 会调用**: `crawl_webpage`，参数为 `{ "url": "https://example.com/article" }`
+**AI 会调用**: 先调用 `bing_search` 搜索，从返回结果中取第一条的 `uuid` 和 `url`，再调用 `crawl_webpage`，参数为 `{ "uuids": ["<搜索结果中的uuid>"], "urlMap": { "<uuid>": "<对应网址>" } }`
+
+> 注意: `crawl_webpage` 只能抓取 `bing_search` 返回的搜索结果，不能直接传入任意网址。
 
 ## 技术实现
 
